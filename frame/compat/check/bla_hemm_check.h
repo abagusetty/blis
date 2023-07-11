@@ -41,10 +41,10 @@
 	f77_int lower, upper; \
 	f77_int nrowa; \
 \
-	left  = PASTEF770(lsame)( sidea, "L", (ftnlen)1, (ftnlen)1 ); \
-	right = PASTEF770(lsame)( sidea, "R", (ftnlen)1, (ftnlen)1 ); \
-	lower = PASTEF770(lsame)( uploa, "L", (ftnlen)1, (ftnlen)1 ); \
-	upper = PASTEF770(lsame)( uploa, "U", (ftnlen)1, (ftnlen)1 ); \
+	left  = PASTEF770(bla_lsame)( sidea, "L", (ftnlen)1, (ftnlen)1 ); \
+	right = PASTEF770(bla_lsame)( sidea, "R", (ftnlen)1, (ftnlen)1 ); \
+	lower = PASTEF770(bla_lsame)( uploa, "L", (ftnlen)1, (ftnlen)1 ); \
+	upper = PASTEF770(bla_lsame)( uploa, "U", (ftnlen)1, (ftnlen)1 ); \
 \
 	if ( left ) { nrowa = *m; } \
 	else        { nrowa = *n; } \
@@ -72,7 +72,7 @@
 \
 		bli_string_mkupper( func_str ); \
 \
-		PASTEF770(xerbla)( func_str, &info, (ftnlen)6 ); \
+		PASTEF770(bla_xerbla)( func_str, &info, (ftnlen)6 ); \
 \
 		return; \
 	} \

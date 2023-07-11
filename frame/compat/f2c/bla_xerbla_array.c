@@ -65,7 +65,7 @@ int PASTEF770(xerbla_array)(const bla_character *srname_array, const bla_integer
 	srname[i] = '\0';
 
 	// Call xerbla_().
-	PASTEF770(xerbla)( srname, info, ( ftnlen )srname_len );
+	PASTEF770(bla_xerbla)( srname, info, ( ftnlen )srname_len );
 
 	return 0;
 }
