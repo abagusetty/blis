@@ -45,12 +45,25 @@ void bli_cntx_init_altramax( cntx_t* cntx )
 
 	// Update the context with optimized native gemm micro-kernels and
 	// their storage preferences.
-	bli_cntx_set_l3_nat_ukrs
+	bli_cntx_set_ukrs
 	(
-	  2,
+	  cntx,
+
 	  BLIS_GEMM_UKR, BLIS_FLOAT,    bli_sgemm_armv8a_asm_8x12, FALSE,
 	  BLIS_GEMM_UKR, BLIS_DOUBLE,   bli_dgemm_armv8a_asm_6x8,  FALSE,
-	  cntx
+
+	  BLIS_VA_END
+	);
+
+	// Update the context with storage preferences.
+	bli_cntx_set_ukr_prefs
+	(
+	  cntx,
+
+	  BLIS_GEMM_UKR_ROW_PREF,   BLIS_FLOAT,    FALSE,
+	  BLIS_GEMM_UKR_ROW_PREF,   BLIS_DOUBLE,   FALSE,
+
+	  BLIS_VA_END
 	);
 
 	// Initialize level-3 blocksize objects with architecture-specific values.
